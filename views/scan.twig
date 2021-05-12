@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <style>
+      h1 {
+        text-align: center;
+      }
+
+      .credit {
+        margin-top: 0px;
+        color: grey;
+        text-align: center
+      }
+
+      .panels {
+        margin: 0 auto;
+        width: 80%;
+      }
+
+      .panels a {
+        width: 48%;
+        margin: 1%;
+        background-color: gray;
+        text-align: center;
+        float: left;
+        padding: 20px;
+        box-sizing: border-box;
+        color: white;
+        font-weight: bold;
+        display: block;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Scan</h1>
+
+    <div id="stream"></div>
+    <p id="startdecoder">Start Scanner</p>
+    <p id="stopdecoder">Stop Scanner</p>
+
+    <script src="/js/quagga.min.js"></script>
+    <script src="/js/barDecoder.js"></script>
+  </body>
+</html>
