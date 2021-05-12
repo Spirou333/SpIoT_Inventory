@@ -1,0 +1,26 @@
+{
+  "name": "spiot_inventory",
+  "version": "1.0.0",
+  "description": "Inventory system for groceries",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "quagga": "^0.12.1",
+    "twig": "^1.15.4",
+    "twing": "^5.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Spirou333/SpIoT_Inventory.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Spirou333/SpIoT_Inventory/issues"
+  },
+  "homepage": "https://github.com/Spirou333/SpIoT_Inventory#readme"
+}
