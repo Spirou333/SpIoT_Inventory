@@ -9,21 +9,24 @@ Quagga.init({
   }
 }, function(err) {
     if (err) {
-        console.log(err);
+        console.log(err)
         return
     }
-    console.log("Initialization finished. Ready to start");
+    console.log("Initialization finished. Ready to start")
     Quagga.start()
-});
-
-document.onLoad(function(){
-  document.getElementById("startdecoder").addEventListener("click", startDecoder())
-  document.getElementById("stopdecoder").addEventListener("click", stopDecoder())
 })
 
+/*document.onLoad(function(){
+  document.getElementById("startdecoder").addEventListener("click", startDecoder())
+  document.getElementById("stopdecoder").addEventListener("click", stopDecoder())
+})*/
+
 function processCode(data) {
-  Quagga.stop()
-  console.log(this.data.codeResult.code)
+  if(data !== undefined){
+    Quagga.stop()
+    console.log(data)
+    console.log(data.codeResult.code)
+  }
 }
 
 function startDecoder() {
@@ -35,4 +38,4 @@ function stopDecoder() {
   Quagga.stop()
 }
 
-Quagga.onProcessed(processCode)
+Quagga.onDetected(processCode)

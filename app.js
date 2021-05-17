@@ -27,12 +27,12 @@ app.get('/scan', (req, res) => {
     });
 })
 
-app.get('/add', (req, res) => {
+app.get('/update', (req, res) => {
   res.send('Adding item')
 })
 
-app.get('/remove', (req, res) => {
-  res.send('Removing item')
+app.get('/new', (req, res) => {
+  res.send('Adding a new item')
 })
 
 app.get('/view', (req, res) => {
@@ -41,10 +41,6 @@ app.get('/view', (req, res) => {
 
 app.get('/shoppingList', (req, res) => {
   res.send('Shopping list')
-})
-
-app.get('/new', (req, res) => {
-  res.send('Adding a new item')
 })
 
 module.exports = router //remove
