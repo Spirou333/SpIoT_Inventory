@@ -1,3 +1,6 @@
+CREATE DATABASE IoT_Inventory;
+USE IoT_Inventory;
+
 CREATE TABLE categories (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(25) NOT NULL

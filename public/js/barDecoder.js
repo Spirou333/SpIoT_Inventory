@@ -1,3 +1,5 @@
+const address = "http://localhost:3000/"
+
 //Initialization of Quagga with the required config
 Quagga.init({
   inputStream : {
@@ -18,18 +20,27 @@ Quagga.init({
 })
 
 //Click EventListener for starting and stopping the Quagga (the scanner)
-/*document.onLoad(function(){
-  document.getElementById("startdecoder").addEventListener("click", startDecoder())
-  document.getElementById("stopdecoder").addEventListener("click", stopDecoder())
-})*/
+$(document).ready(function(){
+  $("#startdecoder").click(startDecoder())
+  $("#stopdecoder").click(stopDecoder())
+})
 
 //Processing the detected code
 function processCode(data) {
   //Checking if the detected code actually worked
   if(data !== undefined) {
+    var ean = data.codeResult.code
     Quagga.stop() //Stopping Quagga since the code was successfully detected
-    console.log(data)
-    console.log(data.codeResult.code)
+
+    $.post(address + "checkEAN",{ean:ean}, function(data){
+      if(data === 'exists') {
+        window.location.replace(address + "update/" + ean);
+      } else if (data === 'new') {
+        window.location.replace(address + "new/" + ean);
+      } else {
+        alert("Error checking the EAN in the database")
+      }
+    });
   }
 }
 
