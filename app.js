@@ -71,6 +71,29 @@ app.get('/new/:id', (req, res) => {
   })
 })
 
+app.post('/new', (req, res) => {
+    console.log('Got body:', req.body)
+    let sqlStatement
+    let formData = Object.entries(req.body)
+    sqlStatement = "INSERT INTO items ("
+    formData.forEach(ele => {
+      sqlStatement += (ele[0] + ",")
+    })
+    sqlStatement = sqlStatement.slice(0, -1)
+    sqlStatement += ") VALUES ("
+    formData.forEach(ele => {
+      sqlStatement += ("'" + ele[1] + "',")
+    })
+    sqlStatement = sqlStatement.slice(0, -1)
+    sqlStatement += ")"
+
+    console.log(sqlStatement)
+    connection.query(sqlStatement, function (err, rows, fields) {
+      if (err) throw err
+      res.send("OK")
+    })
+});
+
 app.get('/view', (req, res) => {
   res.send('Viewing itemlist')
 })

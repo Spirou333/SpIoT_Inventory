@@ -6,13 +6,17 @@
   </head>
   <body>
     <h1>Register new item</h1>
-    <div class="form">
+    <div class="form" id="newItemForm">
       <label for="ean">EAN</label>
       <input id="ean" disabled value="{{ ean }}">
       <label for="itemName">Item Name</label>
       <input id="itemName">
       <label for="quantity">Quantity</label>
       <input id="quantity">
+      <div class="button" onclick="submit('new','newItemForm')">Submit</div>
     </div>
+
+    <script src="/js/vendor/jquery.min.js"></script>
+    <script src="/js/submitter.js"></script>
   </body>
 </html>

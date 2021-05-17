@@ -40,7 +40,7 @@ function processCode(data) {
       } else {
         alert("Error checking the EAN in the database")
       }
-    });
+    })
   }
 }
 
