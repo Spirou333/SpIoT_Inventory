@@ -3,14 +3,13 @@ const app = express()
 const port = 3000
 const router = express.Router() //remove
 const path = require('path')
-const {TwingEnvironment, TwingLoaderFilesystem} = require('twing')
+const {TwingEnvironment, TwingLoaderFilesystem} = require('twing') //Requiring the twing libarby
 
+//Setting the location of the views for the twigfiles
 let loader = new TwingLoaderFilesystem(path.join(__dirname, 'views'))
 let twing = new TwingEnvironment(loader)
 
-//import Quagga from 'quagga'; // ES6
-//const Quagga = require('quagga').default;
-
+//Setting the static folder and view engine for express
 app.use(express.static('public'))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'twing')
