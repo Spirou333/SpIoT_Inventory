@@ -1,17 +1,52 @@
 {% extends '/frame/base.twig' %}
 
 {% block content %}
-<h1>Register new item</h1>
-<div class="form" id="newItemForm">
-  <label for="ean">EAN</label>
-  <input id="ean" disabled value="{{ ean }}">
-  <label for="itemName">Item Name</label>
-  <input id="itemName">
-  <label for="quantity">Quantity</label>
-  <input id="quantity">
-  <div class="button" onclick="submit('new','newItemForm')">Submit</div>
-</div>
-
-<script src="/js/vendor/jquery.min.js"></script>
-<script src="/js/submitter.js"></script>
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center">Register new Item</h1>
+    </div>
+  </div>
+  <div class="row banner panels mt-5">
+    <div class="col-12">
+      <div class="form" id="newItemForm">
+        <div class="mb-3">
+          <label for="ean" class="form-label">EAN</label>
+          <input class="form-control" id="ean" disabled value="{{ ean }}">
+          <div class="form-text">Automatically set by scanner</div>
+        </div>
+        <div class="mb-3">
+          <label for="itemName" class="form-label">Item Name</label>
+          <input class="form-control" id="itemName">
+        </div>
+        <div class="mb-3">
+          <label for="type" class="form-label">Item Type</label>
+          <input class="form-control" id="type">
+        </div>
+        <div class="mb-3">
+          <label for="size" class="form-label">Item Size</label>
+          <input class="form-control" id="size">
+        </div>
+        <div class="mb-3">
+          <label for="usualPrice" class="form-label">Usual Price</label>
+          <input class="form-control" id="usualPrice" value="0.0">
+          <div class="form-text">Estimated usual price for this product alone. Will be used for shopping list calculations</div>
+        </div>
+        <div class="mb-3">
+          <label for="quantity" class="form-label">Quantity</label>
+          <input type="number" class="form-control" id="quantity">
+        </div>
+        <div class="mb-5">
+          <label for="minimumQuantity" class="form-label">Minimum Quantity</label>
+          <input type="number" class="form-control" id="minimumQuantity">
+          <div class="form-text">If the quantity in the inventory sinks below the minimum quantity, the item will be automatically added to the shopping list</div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="favorite">
+          <label class="form-check-label" for="favorite">Favorite</label>
+        </div>
+        <button class="btn btn-primary" onclick="submit('new','newItemForm')">Submit</button>
+      </div>
+    </div>
+  </div>
+  <script src="/js/vendor/jquery.min.js"></script>
+  <script src="/js/submitter.js"></script>
 {% endblock %}

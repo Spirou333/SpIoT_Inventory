@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/scan', (req, res) => {
-  twing.render('scan.twig').then((output) => {
+  twing.render('scanItem.twig').then((output) => {
     res.end(output)
   })
 })
@@ -68,7 +68,7 @@ app.get('/update/:id', (req, res) => {
       if(quantity === null || quantity === undefined) {
         quantity = 0
       }
-      twing.render('update.twig',{ean:req.params.id,quantity:quantity}).then((output) => {
+      twing.render('updateItem.twig',{ean:req.params.id,quantity:quantity}).then((output) => {
         res.end(output)
       })
     }
@@ -104,6 +104,7 @@ app.post('/new', (req, res) => {
     })
 })
 
+//Updating the quantity of the item
 app.post('/updateQuantity', (req, res) => {
   let sqlStatement = "UPDATE items SET quantity='" + req.body.quantity + "' WHERE ean='" + req.body.ean + "'"
   connection.query(sqlStatement, function (err, rows, fields) {
@@ -112,8 +113,24 @@ app.post('/updateQuantity', (req, res) => {
   })
 })
 
+app.get('/itemList', (req, res) => {
+  let sqlStatement = "SELECT itemName,type,quantity FROM items"
+  connection.query(sqlStatement, function (err, rows, fields) {
+    if (err) throw err
+    res.send(rows)
+  })
+})
+
 app.get('/view', (req, res) => {
-  res.send('Viewing itemlist')
+  twing.render('viewItemList.twig').then((output) => {
+    res.end(output)
+  })
+})
+
+app.get('/view/:id', (req, res) => {
+  twing.render('viewItem.twig').then((output) => {
+    res.end(output)
+  })
 })
 
 app.get('/shoppingList', (req, res) => {

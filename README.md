@@ -7,7 +7,6 @@ Todo:
 - Adding item variety (Size, gesalzen/gesüsst)
 - Translations
 - Proper middleware
-- CSS
 - Modifying locations and categories lists
 - Settings
 - Dockerfile
@@ -16,7 +15,6 @@ Todo:
 - Config file
 - Usual Item Price
 - Store list
-- Bootstrap
 - Responsive
 - Minimum needed of item (Automatic adding to shopping list if below minimum)
 - Notifications
@@ -24,4 +22,8 @@ Todo:
 - Security
 - Validation
 - Errorhandling
-- Errosmessages
+- Errormessages
+- Automated backup
+- Search Item List
+- Filter Item List 
+- (Expiredates)
