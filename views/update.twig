@@ -1,25 +1,29 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <style>
+{% extends '/frame/base.twig' %}
 
-    </style>
-  </head>
-  <body>
-    <div class="itemfound">
-      <h2>This item is registered</h2>
-      <label>EAN</label>
-      <input></input>
-      <label>How much?</label>
-      <input></input>
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center">Item Found</h1>
     </div>
-    <div class="newitem">
-      <h2>This item isn't registered yet</h2>
-      <p>EAN</p>
-      <p>Image</p>
-      <p>Name</p>
-      <p>Category</p>
-      <p>Size</p>
+  </div>
+  <div class="row banner panels mt-5">
+    <div class="col-12">
+      <div class="form" id="updateItemForm">
+        <div class="mb-3">
+          <label for="ean" class="form-label">EAN</label>
+          <input class="form-control" id="ean" disabled value="{{ ean }}">
+          <div class="form-text">Automatically set by scanner</div>
+        </div>
+        <div class="mb-3">
+          <label for="quantity" class="form-label">Quantity</label>
+          <input class="form-control mb-2" id="quantity" value="{{ quantity }}">
+          <button class="btn btn-secondary" onclick="$('#quantity').val((parseInt($.trim($('#quantity').val())))+1)">+</button>
+          <button class="btn btn-secondary" onclick="$('#quantity').val((parseInt($.trim($('#quantity').val())))-1)">-</button>
+        </div>
+        <button class="btn btn-primary" onclick="submit('updateQuantity','updateItemForm')">Submit</button>
+      </div>
     </div>
-  </body>
-</html>
+  </div>
+  <script src="/js/vendor/jquery.min.js"></script>
+  <script src="/js/submitter.js"></script>
+{% endblock %}

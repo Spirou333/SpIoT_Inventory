@@ -1,4 +1,4 @@
-const address = "http://localhost:3000/"
+const address = "http://" + window.location.host + "/"
 
 //Initialization of Quagga with the required config
 Quagga.init({

@@ -45,22 +45,33 @@ app.get('/scan', (req, res) => {
 
 //Post request to check if an EAN already exists in the DB
 app.post('/checkEAN', (req, res) => {
-    console.log('Got body:', req.body)
+    console.log('Got scan:', req.body)
     connection.query('SELECT * FROM items WHERE ean="' + req.body.ean + '"', function (err, rows, fields) {
       if (err) throw err
-      console.log('The solution is: ', rows.length)
       if(rows.length > 0) {
-        res.send("exists")
+        res.send("exists") //If rows are present the item already exists
       } else {
-        res.send("new")
+        res.send("new") //Otherwise it has to be registered
       }
     })
 });
 
 //Page with the form to update an existing item
 app.get('/update/:id', (req, res) => {
-  twing.render('update.twig',{ean:req.params.id}).then((output) => {
-    res.end(output)
+  //Getting quantity from DB entry with this ean
+  let sqlStatement = "SELECT quantity FROM items WHERE ean='" + req.params.id + "'"
+  connection.query(sqlStatement, function (err, rows, fields) {
+    if (err) throw err
+    if(rows.length > 0) {
+      let quantity = rows[0].quantity
+      //If quantity is not set, it gets assumed the inventory is 0
+      if(quantity === null || quantity === undefined) {
+        quantity = 0
+      }
+      twing.render('update.twig',{ean:req.params.id,quantity:quantity}).then((output) => {
+        res.end(output)
+      })
+    }
   })
 })
 
@@ -72,27 +83,34 @@ app.get('/new/:id', (req, res) => {
 })
 
 app.post('/new', (req, res) => {
-    console.log('Got body:', req.body)
-    let sqlStatement
-    let formData = Object.entries(req.body)
-    sqlStatement = "INSERT INTO items ("
+    let sqlStatement = "INSERT INTO items ("
+    let formData = Object.entries(req.body) //Making the JSON Object into an array
+    //Getting the keys that have the same name as the columns in the db
     formData.forEach(ele => {
       sqlStatement += (ele[0] + ",")
     })
-    sqlStatement = sqlStatement.slice(0, -1)
+    sqlStatement = sqlStatement.slice(0, -1) //Removing last comma
     sqlStatement += ") VALUES ("
+    //Adding the values of these keys
     formData.forEach(ele => {
       sqlStatement += ("'" + ele[1] + "',")
     })
     sqlStatement = sqlStatement.slice(0, -1)
     sqlStatement += ")"
 
-    console.log(sqlStatement)
     connection.query(sqlStatement, function (err, rows, fields) {
       if (err) throw err
       res.send("OK")
     })
-});
+})
+
+app.post('/updateQuantity', (req, res) => {
+  let sqlStatement = "UPDATE items SET quantity='" + req.body.quantity + "' WHERE ean='" + req.body.ean + "'"
+  connection.query(sqlStatement, function (err, rows, fields) {
+    if (err) throw err
+    res.send("OK")
+  })
+})
 
 app.get('/view', (req, res) => {
   res.send('Viewing itemlist')

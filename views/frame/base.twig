@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include '/frame/meta.twig' %}
+  </head>
+  <body>
+    <header class="bg-primary">
+      {% include '/frame/header.twig' %}
+    </header>
+    <main class="container-fluid">
+      {% block content %}{% endblock %}
+    </main>
+    <footer>
+      {% include '/frame/footer.twig' %}
+    </footer>
+  </body>
+</html>

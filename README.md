@@ -16,3 +16,12 @@ Todo:
 - Config file
 - Usual Item Price
 - Store list
+- Bootstrap
+- Responsive
+- Minimum needed of item (Automatic adding to shopping list if below minimum)
+- Notifications
+- PWA
+- Security
+- Validation
+- Errorhandling
+- Errosmessages

@@ -1,4 +1,4 @@
-const address = "http://localhost:3000/"
+const address = "http://" + window.location.host + "/"
 
 function submit(path,form) {
   var formValues = {}
@@ -11,9 +11,9 @@ function submit(path,form) {
 
   $.post(address + path,formValues, function(data){
     if(data == "OK") {
-      alert("Successfully added")
+      alert("Successful")
     } else {
-      alert("Error adding the item")
+      alert("Error submitting the data")
     }
   })
 }

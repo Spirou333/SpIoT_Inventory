@@ -1,0 +1,31 @@
+.banner {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  color: white;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  padding-top: 150px;
+}
+
+.panels a {
+  text-decoration: none;
+}
+
+.drawingBuffer {
+  display: none!important
+}

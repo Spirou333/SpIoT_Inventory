@@ -1,19 +1,25 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <style>
+{% extends '/frame/base.twig' %}
 
-    </style>
-  </head>
-  <body>
-    <h1>Scan</h1>
-
-    <div id="stream"></div>
-    <p id="startdecoder">Start Scanner</p>
-    <p id="stopdecoder">Stop Scanner</p>
-
-    <script src="/js/vendor/jquery.min.js"></script>
-    <script src="/js/vendor/quagga.min.js"></script>
-    <script src="/js/barDecoder.js"></script>
-  </body>
-</html>
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center">Scan</h1>
+    </div>
+  </div>
+  <div class="row banner stream mt-5">
+    <div class="col-12 text-center">
+      <div id="stream"></div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-2">
+      <button class="btn btn-secondary w-100" id="startdecoder">Start Scanner</button>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-secondary w-100" id="stopdecoder">Stop Scanner</button>
+    </div>
+  </div>
+  <script src="/js/vendor/jquery.min.js"></script>
+  <script src="/js/vendor/quagga.min.js"></script>
+  <script src="/js/barDecoder.js"></script>
+{% endblock %}
