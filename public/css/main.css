@@ -34,3 +34,7 @@ main {
   text-decoration: none;
   color: black;
 }
+
+.items .card-text, .favorites .card-text {
+  min-height: 40px;
+}
