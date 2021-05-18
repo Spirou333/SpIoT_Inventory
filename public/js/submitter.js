@@ -12,7 +12,7 @@ function submit(path,form) {
     }
     //Checking for the favorite checkbox and converting it to boolean
     if(inputName == "favorite") {
-      if(inputValue == "on") {
+      if($(this).is(':checked')) {
         inputValue = 1
       } else {
         inputValue = 0

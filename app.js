@@ -114,7 +114,7 @@ app.post('/updateQuantity', (req, res) => {
 })
 
 app.get('/itemList', (req, res) => {
-  let sqlStatement = "SELECT itemName,type,quantity FROM items"
+  let sqlStatement = "SELECT ean,itemName,type,quantity,favorite FROM items"
   connection.query(sqlStatement, function (err, rows, fields) {
     if (err) throw err
     res.send(rows)

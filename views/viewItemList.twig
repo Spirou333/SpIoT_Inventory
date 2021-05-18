@@ -1,0 +1,25 @@
+{% extends '/frame/base.twig' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center">Itemlist</h1>
+    </div>
+  </div>
+  <div class="row banner mt-5">
+    <div class="col-12">
+      <div class="row favorites" id="favoriteList">
+        <div class="col-12">
+          <h2 class="mb-3">Favorites</h2>
+        </div>
+      </div>
+      <div class="row items mt-5" id="itemList">
+        <div class="col-12">
+          <h2 class="mb-3">Items</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/js/vendor/jquery.min.js"></script>
+  <script src="/js/itemLister.js"></script>
+{% endblock %}
