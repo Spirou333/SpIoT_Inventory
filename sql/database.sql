@@ -31,6 +31,7 @@ CREATE TABLE items (
   usualPrice DECIMAL(4,2),
   favorite BOOLEAN,
   minimumQuantity INT,
+  neededQuantity INT,
   quantity INT,
   locationID INT,
   FOREIGN KEY (locationID)

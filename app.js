@@ -127,9 +127,29 @@ app.get('/view', (req, res) => {
   })
 })
 
-app.get('/view/:id', (req, res) => {
-  twing.render('viewItem.twig').then((output) => {
-    res.end(output)
+app.get('/viewItem/:id', (req, res) => {
+  let sqlStatement = "SELECT * FROM items WHERE ean='" + req.params.id + "'"
+  connection.query(sqlStatement, function (err, rows, fields) {
+    if (err) throw err
+    let favoriteStatus
+    if(rows[0].favorite == 0) {
+      favoriteStatus = "No"
+    } else {
+      favoriteStatus = "Yes"
+    }
+
+    twing.render('viewItem.twig',{
+      ean:req.params.id,
+      itemName:rows[0].itemName,
+      type:rows[0].type,
+      size:rows[0].size,
+      favorite:favoriteStatus,
+      usualPrice:rows[0].usualPrice,
+      minimumQuantity:rows[0].minimumQuantity,
+      quantity:rows[0].quantity
+    }).then((output) => {
+      res.end(output)
+    })
   })
 })
 
