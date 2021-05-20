@@ -31,6 +31,12 @@ connection.connect(error => {
   console.log("Successfully connected to the database.");
 });
 
+app.use((req, res, next)=>{
+  twing.render('404.twig').then((output) => {
+    res.status(404).end(output)
+  })
+});
+
 app.get('/', (req, res) => {
   twing.render('index.twig').then((output) => {
     res.end(output)
@@ -150,6 +156,26 @@ app.get('/viewItem/:id', (req, res) => {
     }).then((output) => {
       res.end(output)
     })
+  })
+})
+
+app.post('/brand' (req, res) => {
+
+})
+
+app.get('/brands', (req, res) => {
+  twing.render('brands.twig').then((output) => {
+    res.end(output)
+  })
+})
+
+app.post('/store' (req, res) => {
+
+})
+
+app.get('/stores', (req, res) => {
+  twing.render('stores.twig').then((output) => {
+    res.end(output)
   })
 })
 
