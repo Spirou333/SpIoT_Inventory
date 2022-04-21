@@ -31,11 +31,11 @@ connection.connect(error => {
   console.log("Successfully connected to the database.");
 });
 
-app.use((req, res, next)=>{
+/*app.use((req, res, next)=>{
   twing.render('404.twig').then((output) => {
     res.status(404).end(output)
   })
-});
+});*/
 
 app.get('/', (req, res) => {
   twing.render('index.twig').then((output) => {
@@ -159,7 +159,7 @@ app.get('/viewItem/:id', (req, res) => {
   })
 })
 
-app.post('/brand' (req, res) => {
+app.post('/brand', (req, res) => {
 
 })
 
@@ -169,7 +169,7 @@ app.get('/brands', (req, res) => {
   })
 })
 
-app.post('/store' (req, res) => {
+app.post('/store', (req, res) => {
 
 })
 
